@@ -40,7 +40,7 @@ rebel.xml
 
 
 # Compiled class file
-*.class
+target/classes/com/cas/authentication/common/Encodes.class
 
 # Log file
 *.log

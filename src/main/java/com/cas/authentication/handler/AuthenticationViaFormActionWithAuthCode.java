@@ -1,19 +1,18 @@
 package com.cas.authentication.handler;
 
-import javax.servlet.http.HttpServletRequest;  
-import javax.servlet.http.HttpSession;  
-  
-import org.jasig.cas.authentication.Credential;  
-import org.jasig.cas.authentication.RootCasException;  
-import org.jasig.cas.web.flow.AuthenticationViaFormAction;  
-import org.jasig.cas.web.support.WebUtils;  
-import org.springframework.binding.message.MessageBuilder;  
-import org.springframework.binding.message.MessageContext;  
-import org.springframework.util.StringUtils;
-import org.springframework.webflow.execution.RequestContext;  
-
 import com.cas.authentication.exception.BadAuthcodeAuthenticationException;
 import com.cas.authentication.exception.NullAuthcodeAuthenticationException;
+import org.jasig.cas.authentication.Credential;
+import org.jasig.cas.authentication.RootCasException;
+import org.jasig.cas.web.flow.AuthenticationViaFormAction;
+import org.jasig.cas.web.support.WebUtils;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
+import org.springframework.util.StringUtils;
+import org.springframework.webflow.execution.RequestContext;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
   
 /**
 * 项目名称：cas(V1.0)
@@ -34,12 +33,12 @@ public class AuthenticationViaFormActionWithAuthCode extends AuthenticationViaFo
         if (StringUtils.isEmpty(submitAuthcode)|| StringUtils.isEmpty(authcode)) {  
             populateErrorsInstance(new NullAuthcodeAuthenticationException(),messageContext);  
             return "error";  
-        }  
-        if (submitAuthcode.equals(authcode)) {  
-            return "success";  
-        }  
-        populateErrorsInstance(new BadAuthcodeAuthenticationException(), messageContext);  
-        return "error";  
+        }
+        if (submitAuthcode.equals(authcode)) {
+            return "success";
+        }
+        populateErrorsInstance(new BadAuthcodeAuthenticationException(), messageContext);
+        return "error";
     }  
   
     private void populateErrorsInstance(final RootCasException e, final MessageContext messageContext) {  
